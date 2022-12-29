@@ -10,26 +10,8 @@ export type AppNavigatorProps = {
 
 export type MainStackParamList = {
 	Landing: undefined;
-	Device: undefined;
-	Brand: { parentId: string; icons: JSX.Element[] };
-	Gamme: { deviceId: string; brandId: string; icons: JSX.Element[] };
-	Model: {
-		deviceId: string;
-		brandId: string;
-		gammeId: string;
-		icons: JSX.Element[];
-	};
-	Problem: {
-		deviceId: string;
-		brandId: string;
-		gammeId: string;
-		modelId: string;
-		icons: JSX.Element[];
-		modelColors: string[];
-	};
-	// Form: { reparationProduct: ReparationProduct };
-	Success: { code: string };
-	Fixes: undefined;
+	product: undefined;
+	addProduct: undefined;
 };
 
 export type ProfileStackParamList = {
@@ -58,9 +40,12 @@ export type RootStackParamList = {
 	InitialConfig: undefined;
 	Auth: undefined;
 	Home: undefined;
+	App: undefined;
 	// Fixes: undefined;
 	Profile: undefined;
 	Landing: undefined;
+	addProduct: undefined;
+	product: undefined;
 	// Device: undefined;
 	// Brand: { deviceId: string; icons: JSX.Element[] };
 	// Gamme: { deviceId: string; brandId: string; icons: JSX.Element[] };
@@ -91,9 +76,13 @@ export type LandingScreenProps = NativeStackScreenProps<
 	MainStackParamList,
 	'Landing'
 >;
-export type DeviceScreenProps = NativeStackScreenProps<
+export type ProductScreenProps = NativeStackScreenProps<
 	MainStackParamList,
-	'Device'
+	'product'
+>;
+export type AddProductScreenProps = NativeStackScreenProps<
+	MainStackParamList,
+	'addProduct'
 >;
 
 export type BrandScreenProps = NativeStackScreenProps<
@@ -133,6 +122,7 @@ export type AuthTabParamList = {
 	InitialConfig: undefined;
 	Auth: undefined;
 	Home: undefined;
+	App: undefined;
 	ForgetPassword: undefined;
 };
 export type CompanyProfileStackParamList = {

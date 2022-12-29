@@ -264,7 +264,7 @@ export default function EmailIDScreen({ navigation, route }: LoginScreenProps) {
 							name={'Login'.toString()}
 							onPress={async () => {
 								//handleLoginButton();
-								navigation.navigate('Home');
+								navigation.navigate('App');
 							}}
 						/>
 					)}

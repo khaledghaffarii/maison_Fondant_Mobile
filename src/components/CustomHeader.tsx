@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Image, View } from 'react-native';
+import { Pressable, StyleSheet, Image, View, Text } from 'react-native';
 import React, { useState } from 'react';
 import { navigate } from '../hooks/NavigationHook';
 import { icons } from '../utils/icons';
@@ -15,45 +15,45 @@ export default function CustomHeader(props: { withProfilePicture: boolean }) {
 	return (
 		<View
 			style={{
-				backgroundColor: 'white',
-
-				alignItems: 'center',
-				borderWidth: 0.3,
+				width: Layout.window.width,
+				height: Layout.window.height * 0.1,
+				borderWidth: 1,
 				borderColor: '#eee',
+				justifyContent: 'space-between',
 			}}>
-			<View
+			<Text
 				style={{
-					flexDirection: 'row',
-					justifyContent: 'space-around',
-					width: Layout.window.width,
+					textAlign: 'center',
+					position: 'absolute',
+					right: 0,
+					left: 0,
+					top: 0,
+					marginTop: -22,
 				}}>
-				{props.withProfilePicture && (
-					<Pressable
-						onPress={() => {
-							navigate('Profile');
-						}}></Pressable>
-				)}
 				{icons.logo_maison_fondant_Home}
-				{props.withProfilePicture && (
-					<Pressable
-						onPress={() => {
-							navigate('Profile');
-						}}>
-						<Image
-							source={images.profilePicture}
-							style={{
-								height: 55,
-								width: 55,
-								borderRadius: 52,
-								borderWidth: 2,
-								marginTop: 15,
-								padding: 5,
-								borderColor: '#ae5f2a',
-							}}
-						/>
-					</Pressable>
-				)}
-			</View>
+			</Text>
+			<Pressable
+				onPress={() => {
+					navigate('Profile');
+				}}>
+				<Image
+					source={images.profilePicture}
+					style={{
+						height: 45,
+						width: 45,
+						borderRadius: 52,
+						borderWidth: 2,
+						marginRight: 15,
+						marginTop: 5,
+						position: 'absolute',
+
+						right: 0,
+
+						padding: 5,
+						borderColor: '#ae5f2a',
+					}}
+				/>
+			</Pressable>
 		</View>
 	);
 }

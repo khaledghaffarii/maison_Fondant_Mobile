@@ -12,4 +12,5 @@ export const images = {
 	profilePictureFemale: require('../../assets/images/female_avatar.jpg'),
 
 	profilePicture: require('../../assets/images/khaloud.jpg'),
+	noPhoto: require('../../assets/images/no_photo.png'),
 };

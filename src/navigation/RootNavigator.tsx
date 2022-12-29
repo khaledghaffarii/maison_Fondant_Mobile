@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import HomeNavigator from './home/HomeNavigator';
+import HomeNavigator, { DrawerNav } from './home/HomeNavigator';
 import AuthNavigator from './public/AuthNavigator';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AppNavigatorProps, RootStackParamList } from '../utils/types';
@@ -33,10 +33,19 @@ export default function RootNavigator(props: AppNavigatorProps) {
 						component={AuthNavigator}
 						options={{ headerShown: false }}
 					/>
-					<Stack.Screen
+					{/* <Stack.Screen
 						name='Home'
 						component={HomeNavigator}
 						options={{ headerShown: false }}
+					/> */}
+					<Stack.Screen
+						name='App'
+						component={DrawerNav}
+						options={{
+							headerShown: false,
+							headerShadowVisible: false,
+							contentStyle: { backgroundColor: 'white' },
+						}}
 					/>
 				</Stack.Navigator>
 			</NavigationContainer>

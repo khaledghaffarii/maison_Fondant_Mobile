@@ -39,7 +39,7 @@ export default function ProfileNavigator() {
 							headerLeft: () => (
 								<View
 									style={{
-										marginTop: Platform.OS == 'ios' ? 0 : 77,
+										// marginTop: Platform.OS == 'ios' ? 0 : 77,
 										width: Layout.window.width,
 									}}>
 									<BackButton

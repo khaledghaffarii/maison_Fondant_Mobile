@@ -129,11 +129,10 @@ const styles = StyleSheet.create({
 	},
 	bottomNavigationContainer: {
 		height: hp('35%'),
-
 		alignSelf: 'center',
 	},
 	headerText: {
-		fontSize: 20,
+		fontSize: 21,
 		margin: 35,
 		fontFamily: 'AllerLight',
 		textAlign: 'center',
@@ -145,9 +144,10 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	languagesContainer: {
-		flexDirection: 'row',
 		alignSelf: 'center',
-		margin: 17,
+		flexDirection: 'row',
+		height: Layout.window.height * 0.1,
+		marginTop: 100,
 	},
 	messageText: {
 		fontFamily: 'AllerLight',

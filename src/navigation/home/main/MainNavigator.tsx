@@ -19,6 +19,8 @@ import { StatusBar } from 'react-native';
 import { icons } from '../../../utils/icons';
 import BackButton from '../../public/BackButtom';
 import { Layout } from './../../../utils/device/index';
+import Product from '../../../modules/main/product/Product';
+import AddProduct from '../../../modules/main/product/AddProduct';
 const Stack = createNativeStackNavigator<MainStackParamList>();
 
 /**
@@ -54,6 +56,56 @@ export default function MainNavigator() {
 						headerShadowVisible: false,
 						headerTitle: '',
 						headerTitleStyle: { fontFamily: 'AllerBold' },
+					}}
+				/>
+				<Stack.Screen
+					name='product'
+					component={Product}
+					options={({ navigation, route }) => {
+						return {
+							tabBarLabelStyle: { fontFamily: 'AllerLight', fontSize: 12 },
+							headerTitle: '',
+							headerShadowVisible: false,
+							headerLeft: () => (
+								<View
+									style={{
+										// marginTop: Platform.OS == 'ios' ? 0 : 77,
+										width: Layout.window.width,
+										margin: 25,
+									}}>
+									<BackButton
+										onPress={() => {
+											navigation.goBack();
+										}}
+									/>
+								</View>
+							),
+						};
+					}}
+				/>
+				<Stack.Screen
+					name='addProduct'
+					component={AddProduct}
+					options={({ navigation, route }) => {
+						return {
+							tabBarLabelStyle: { fontFamily: 'AllerLight', fontSize: 12 },
+							headerTitle: '',
+							headerShadowVisible: false,
+							headerLeft: () => (
+								<View
+									style={{
+										// marginTop: Platform.OS == 'ios' ? 0 : 77,
+										width: Layout.window.width,
+										margin: 25,
+									}}>
+									<BackButton
+										onPress={() => {
+											navigation.goBack();
+										}}
+									/>
+								</View>
+							),
+						};
 					}}
 				/>
 			</Stack.Navigator>

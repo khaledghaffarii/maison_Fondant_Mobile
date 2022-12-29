@@ -6,7 +6,7 @@ import { icons } from '../../utils/icons';
 export default function BackButton(props: { onPress: Function }) {
 	return (
 		<TouchableOpacity
-			style={{ marginTop: 25 }}
+			style={{ marginTop: 15 }}
 			onPress={() => {
 				props.onPress();
 			}}>

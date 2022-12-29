@@ -32,4 +32,5 @@ export const images = {
 	phone: require('../../../assets/images/phone.png'),
 	email: require('../../../assets/images/email.png'),
 	pay: require('../../../assets/images/logo-pay.jpg'),
+	noPhoto: require('../../../assets/images/no_photo.png'),
 };
