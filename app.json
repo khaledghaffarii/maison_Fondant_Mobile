@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "maison_fondant_mobile",
-    "slug": "maison_fondant_mobile",
+    "name": "Maison Fondant",
+    "slug": "maison_fondant",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,10 +24,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "tn.maison.fondant"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f93a90d2-e296-4d65-a8b7-87019266302d"
+      }
     }
   }
 }

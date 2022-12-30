@@ -1,28 +1,30 @@
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 // import { OldReparation } from "../../models/OldReparation";
 // import { Reparation } from "../../models/Reparation";
 // import { ReparationProduct } from "../../models/ReparationProduct";
 
 export type AppNavigatorProps = {
-	initialRouteName: keyof RootStackParamList;
+  initialRouteName: keyof RootStackParamList;
 };
 
 export type MainStackParamList = {
-	Landing: undefined;
-	product: undefined;
-	addProduct: undefined;
+  Landing: undefined;
+  product: undefined;
+  addProduct: undefined;
+  Clients: undefined;
+  Outputs: undefined;
 };
 
 export type ProfileStackParamList = {
-	Me: undefined;
-	Setting: undefined;
+  Me: undefined;
+  Setting: undefined;
 };
 
 export type FixDetailsTabsParamList = {
-	// Info: { fix: OldReparation };
-	Messages: undefined;
-	//Address: { fix: OldReparation };
+  // Info: { fix: OldReparation };
+  Messages: undefined;
+  //Address: { fix: OldReparation };
 };
 
 // export type AddressScreenProps = NativeStackScreenProps<
@@ -36,235 +38,221 @@ export type FixDetailsTabsParamList = {
 // >;
 
 export type RootStackParamList = {
-	Root: undefined;
-	InitialConfig: undefined;
-	Auth: undefined;
-	Home: undefined;
-	App: undefined;
-	// Fixes: undefined;
-	Profile: undefined;
-	Landing: undefined;
-	addProduct: undefined;
-	product: undefined;
-	// Device: undefined;
-	// Brand: { deviceId: string; icons: JSX.Element[] };
-	// Gamme: { deviceId: string; brandId: string; icons: JSX.Element[] };
-	// Model: {
-	// 	deviceId: string;
-	// 	brandId: string;
-	// 	gammeId: string;
-	// 	icons: JSX.Element[];
-	// };
+  Root: undefined;
+  InitialConfig: undefined;
+  Auth: undefined;
+  Home: undefined;
+  App: undefined;
+  // Fixes: undefined;
+  Profile: undefined;
+  Landing: undefined;
+  addProduct: undefined;
+  product: undefined;
+  Clients: undefined;
+  Outputs: undefined;
+  // Device: undefined;
+  // Brand: { deviceId: string; icons: JSX.Element[] };
+  // Gamme: { deviceId: string; brandId: string; icons: JSX.Element[] };
+  // Model: {
+  // 	deviceId: string;
+  // 	brandId: string;
+  // 	gammeId: string;
+  // 	icons: JSX.Element[];
+  // };
 
-	Problem: {
-		deviceId: string;
-		brandId: string;
-		gammeId: string;
-		modelId: string;
-		icons: JSX.Element[];
-		modelColors: string[];
-	};
-	// Form: { reparationProduct: ReparationProduct };
+  Problem: {
+    deviceId: string;
+    brandId: string;
+    gammeId: string;
+    modelId: string;
+    icons: JSX.Element[];
+    modelColors: string[];
+  };
+  // Form: { reparationProduct: ReparationProduct };
 };
 
 export type RootScreenProps = NativeStackScreenProps<
-	RootStackParamList,
-	'Root'
+  RootStackParamList,
+  "Root"
 >;
 
 export type LandingScreenProps = NativeStackScreenProps<
-	MainStackParamList,
-	'Landing'
+  MainStackParamList,
+  "Landing"
+>;
+export type ClientsScreenProps = NativeStackScreenProps<
+  MainStackParamList,
+  "Clients"
+>;
+
+export type OutputsScreenProps = NativeStackScreenProps<
+  MainStackParamList,
+  "Outputs"
 >;
 export type ProductScreenProps = NativeStackScreenProps<
-	MainStackParamList,
-	'product'
+  MainStackParamList,
+  "product"
 >;
 export type AddProductScreenProps = NativeStackScreenProps<
-	MainStackParamList,
-	'addProduct'
+  MainStackParamList,
+  "addProduct"
 >;
 
-export type BrandScreenProps = NativeStackScreenProps<
-	MainStackParamList,
-	'Brand'
->;
-
-export type GammeScreenProps = NativeStackScreenProps<
-	MainStackParamList,
-	'Gamme'
->;
-
-export type ModelScreenProps = NativeStackScreenProps<
-	MainStackParamList,
-	'Model'
->;
-
-export type ProblemScreenProps = NativeStackScreenProps<
-	MainStackParamList,
-	'Problem'
->;
 // export type FormScreenProps = NativeStackScreenProps<
 //   MainStackParamList,
 //   "Form"
-// >;
-
-export type FormSuccessProps = NativeStackScreenProps<
-	MainStackParamList,
-	'Success'
->;
 
 export type MainProps = BottomTabScreenProps<MainStackParamList>;
 
 export type AuthTabParamList = {
-	Login: undefined;
-	Register: undefined;
-	InitialConfig: undefined;
-	Auth: undefined;
-	Home: undefined;
-	App: undefined;
-	ForgetPassword: undefined;
+  Login: undefined;
+  Register: undefined;
+  InitialConfig: undefined;
+  Auth: undefined;
+  Home: undefined;
+  App: undefined;
+  ForgetPassword: undefined;
 };
 export type CompanyProfileStackParamList = {
-	Menu: undefined;
-	CompanyId: undefined;
-	Location: undefined;
-	Specialities: undefined;
-	Services: undefined;
-	Me: undefined;
-	HelpSupport: undefined;
-	AboutApp: undefined;
-	Auth: undefined;
+  Menu: undefined;
+  CompanyId: undefined;
+  Location: undefined;
+  Specialities: undefined;
+  Services: undefined;
+  Me: undefined;
+  HelpSupport: undefined;
+  AboutApp: undefined;
+  Auth: undefined;
 };
 export type HomeTabParamList = {
-	Main: undefined;
-	Fixes: undefined;
-	Messages: undefined;
-	Profile: {
-		screen: keyof ProfileStackParamList;
-		// params: { fix: OldReparation };
-	};
-	//RepairDetails: { fix: OldReparation };
+  Main: undefined;
+  Fixes: undefined;
+  Messages: undefined;
+  Profile: {
+    screen: keyof ProfileStackParamList;
+    // params: { fix: OldReparation };
+  };
+  //RepairDetails: { fix: OldReparation };
 };
 
 export type ConfigStackParamList = {
-	Welcome: undefined;
-	Laguage: undefined;
-	Country: undefined;
-	Auth: undefined;
+  Welcome: undefined;
+  Laguage: undefined;
+  Country: undefined;
+  Auth: undefined;
 };
 export type RepairsStackParamList = {
-	List: undefined;
-	//Details: { fix: Reparation };
+  List: undefined;
+  //Details: { fix: Reparation };
 };
 export type RegisterStackParamList = {
-	RegisterHome: undefined;
-	RegisterEmail: undefined;
-	Login: undefined;
-	InitialConfig: { screen: string; params: any };
-	Home: undefined;
+  RegisterHome: undefined;
+  RegisterEmail: undefined;
+  Login: undefined;
+  InitialConfig: { screen: string; params: any };
+  Home: undefined;
 };
 
 export type RegisterWithEmailOrPhoneNumberStackParamList = {
-	RegisterEmail: undefined;
-	RegisterPhoneNumber: undefined;
+  RegisterEmail: undefined;
+  RegisterPhoneNumber: undefined;
 };
 
 export type FixesStackParamList = {
-	List: undefined;
-	Details: { fix: any };
-	Info: { screen: FixDetailsTabsParamList; fix: any };
+  List: undefined;
+  Details: { fix: any };
+  Info: { screen: FixDetailsTabsParamList; fix: any };
 };
 export type FixesScreenProps = BottomTabScreenProps<
-	FixesStackParamList,
-	'List'
+  FixesStackParamList,
+  "List"
 >;
 
 export type RegisterHomeScreenProps = NativeStackScreenProps<
-	RegisterStackParamList,
-	'RegisterHome'
+  RegisterStackParamList,
+  "RegisterHome"
 >;
 
 export type ProfileDetailScreenProps = NativeStackScreenProps<
-	ProfileStackParamList,
-	'Me'
+  ProfileStackParamList,
+  "Me"
 >;
 // export type RepairDetailsScreenProps = NativeStackScreenProps<
 //   RepairsStackParamList,
 //   "Details"
 // >;
 export type MenuScreenProps = NativeStackScreenProps<
-	CompanyProfileStackParamList,
-	'Menu'
+  CompanyProfileStackParamList,
+  "Menu"
 >;
 export type LocationScreenProps = NativeStackScreenProps<
-	CompanyProfileStackParamList,
-	'Location'
+  CompanyProfileStackParamList,
+  "Location"
 >;
 export type FormHelpSupportProps = NativeStackScreenProps<
-	CompanyProfileStackParamList,
-	'HelpSupport'
+  CompanyProfileStackParamList,
+  "HelpSupport"
 >;
 export type FormAboutAppProps = NativeStackScreenProps<
-	CompanyProfileStackParamList,
-	'AboutApp'
+  CompanyProfileStackParamList,
+  "AboutApp"
 >;
 export type FixDetailsScreenProps = BottomTabScreenProps<
-	FixesStackParamList,
-	'Details'
+  FixesStackParamList,
+  "Details"
 >;
-export type LoginScreenProps = BottomTabScreenProps<AuthTabParamList, 'Login'>;
+export type LoginScreenProps = BottomTabScreenProps<AuthTabParamList, "Login">;
 
 export type ProfileScreenProps = BottomTabScreenProps<
-	ProfileStackParamList,
-	'Me'
+  ProfileStackParamList,
+  "Me"
 >;
 export type MeProfileScreenProps = NativeStackScreenProps<
-	CompanyProfileStackParamList,
-	'Me'
+  CompanyProfileStackParamList,
+  "Me"
 >;
 export type WelcomeScreenProps = NativeStackScreenProps<
-	ConfigStackParamList,
-	'Welcome'
+  ConfigStackParamList,
+  "Welcome"
 >;
 
 export type ChooseCountryScreenProps = NativeStackScreenProps<
-	ConfigStackParamList,
-	'Country'
+  ConfigStackParamList,
+  "Country"
 >;
 export type ChooseLanguageScreenProps = NativeStackScreenProps<
-	ConfigStackParamList,
-	'Laguage'
+  ConfigStackParamList,
+  "Laguage"
 >;
 
 export type LoginNavigationStack = {
-	EmailOrPhone: undefined;
-	Password: { email: string };
-	Register: undefined;
-	Home: undefined;
-	ForgetPassword: undefined;
+  EmailOrPhone: undefined;
+  Password: { email: string };
+  Register: undefined;
+  Home: undefined;
+  ForgetPassword: undefined;
 };
 
 export type EmailOrPhoneScreenProps = NativeStackScreenProps<
-	LoginNavigationStack,
-	'EmailOrPhone'
+  LoginNavigationStack,
+  "EmailOrPhone"
 >;
 export type PasswordScreenProps = NativeStackScreenProps<
-	LoginNavigationStack,
-	'Password'
+  LoginNavigationStack,
+  "Password"
 >;
 export type RegisterScreenProps = NativeStackScreenProps<
-	RegisterStackParamList,
-	'RegisterEmail'
+  RegisterStackParamList,
+  "RegisterEmail"
 >;
 export type ForgetPasswordScreenProps = NativeStackScreenProps<
-	LoginNavigationStack,
-	'ForgetPassword'
+  LoginNavigationStack,
+  "ForgetPassword"
 >;
 export type deviceType =
-	| 'smartphone'
-	| 'laptop'
-	| 'tablet'
-	| 'printer'
-	| 'tv'
-	| 'gaming-device';
+  | "smartphone"
+  | "laptop"
+  | "tablet"
+  | "printer"
+  | "tv"
+  | "gaming-device";
