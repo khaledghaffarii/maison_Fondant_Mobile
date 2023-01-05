@@ -96,7 +96,7 @@ export default function Clients(props: ClientsScreenProps) {
                 borderRadius: 10,
                 overflow: "scroll",
                 backgroundColor: "#FFF",
-                elevation: 9,
+                elevation: 2,
                 borderColor: "#eee",
               }}
             >

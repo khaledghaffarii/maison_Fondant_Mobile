@@ -99,7 +99,7 @@ export default function Product(props: ProductScreenProps) {
               borderRadius: 10,
               overflow: "scroll",
               backgroundColor: "#FFF",
-              elevation: 9,
+              elevation: 2,
               borderColor: "#fff",
             }}
           >
