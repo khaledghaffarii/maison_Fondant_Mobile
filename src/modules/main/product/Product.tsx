@@ -21,20 +21,20 @@ import { ProductScreenProps } from "../../../utils/types";
 type Props = {};
 const initProducts: Products[] = [];
 export default function Product(props: ProductScreenProps) {
-  const [devices, setDevices] = useState(initProducts);
+  const [products, setProducts] = useState(initProducts);
+  const [productsSearch, setProductsSearch] = useState(initProducts);
   const [searchIcon, setsearchIcon] = useState(true);
-  useEffect(() => {
-    LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
-  }, []);
+
   useEffect(() => {
     ProductService.getInstance()
       .getAllProducts()
       .then((data) => {
-        let _Products = [];
+        let _products = [];
         for (let elem of data!) {
-          _Products.push(new Products(elem));
+          if (elem.name && elem.category) _products.push(new Products(elem));
         }
-        setDevices(_Products);
+        setProducts(_products);
+        setProductsSearch(_products);
       });
   }, []);
 
@@ -44,19 +44,10 @@ export default function Product(props: ProductScreenProps) {
         style={{
           width: Layout.window.width * 0.95,
           alignItems: "flex-end",
+
+          backgroundColor: "#fff",
         }}
-      >
-        <TouchableOpacity
-          onPress={() => {
-            navigate("addProduct");
-          }}
-        >
-          <View style={{ flexDirection: "row", padding: 5 }}>
-            {icons.addIcon}
-            <Text style={{ color: "#ae5f2a" }}>Ajouter</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
+      ></View>
       <View
         style={{
           borderWidth: 1,
@@ -77,12 +68,27 @@ export default function Product(props: ProductScreenProps) {
             width: Layout.window.width,
           }}
           placeholder=" Chercher"
+          onChangeText={(text) => {
+            setProductsSearch(
+              products.filter((value) => {
+                return (
+                  value.name?.toLowerCase().includes(text.toLowerCase()) ||
+                  value.category.name
+                    ?.toLowerCase()
+                    .includes(text.toLowerCase()) ||
+                  value.category.description
+                    ?.toLowerCase()
+                    .includes(text.toLowerCase())
+                );
+              })
+            );
+          }}
         />
       </View>
       <FlatList
         numColumns={1}
-        style={{ marginBottom: 70 }}
-        data={devices}
+        style={{ backgroundColor: "#fff" }}
+        data={productsSearch}
         renderItem={({ item }) => (
           <View
             style={{
@@ -94,7 +100,7 @@ export default function Product(props: ProductScreenProps) {
               overflow: "scroll",
               backgroundColor: "#FFF",
               elevation: 9,
-              borderColor: "#eee",
+              borderColor: "#fff",
             }}
           >
             <View
@@ -195,7 +201,8 @@ export default function Product(props: ProductScreenProps) {
 }
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#fff",
     width: Layout.window.width,
+
+    backgroundColor: "#fff",
   },
 });

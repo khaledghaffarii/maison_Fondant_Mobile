@@ -37,7 +37,7 @@ export class RecipeService {
   async getMonthlyRecipe(year: number, month: number) {
     try {
       const { data } = await axios.get(
-        apiAdress.baseUrl + OUTPUTS.MONTHLY_RECIPE(year, month),
+        apiAdress.baseUrl + OUTPUTS.MONTHLY_RECIPE(year, month + 1),
         {
           headers: {
             "Content-Type": "application/json",

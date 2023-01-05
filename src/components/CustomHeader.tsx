@@ -16,9 +16,7 @@ export default function CustomHeader(props: { withProfilePicture: boolean }) {
     <View
       style={{
         width: Layout.window.width,
-        height: Layout.window.height * 0.1,
-        borderWidth: 1,
-        borderColor: "#eee",
+        flex: 1,
         justifyContent: "space-between",
       }}
     >
@@ -28,7 +26,7 @@ export default function CustomHeader(props: { withProfilePicture: boolean }) {
           position: "absolute",
           right: 0,
           left: 0,
-          top: 0,
+          top: 10,
           marginTop: -22,
         }}
       >
@@ -40,18 +38,16 @@ export default function CustomHeader(props: { withProfilePicture: boolean }) {
         }}
       >
         <Image
-          source={images.profilePicture}
+          source={images.profilePictureMale}
           style={{
             height: 35,
             width: 35,
             borderRadius: 52,
             borderWidth: 2,
             marginRight: 15,
-            marginTop: 15,
+            marginTop: 20,
             position: "absolute",
-
             right: 0,
-
             padding: 5,
             borderColor: "#ae5f2a",
           }}

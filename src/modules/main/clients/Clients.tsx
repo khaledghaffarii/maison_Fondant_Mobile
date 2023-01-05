@@ -9,6 +9,8 @@ import {
   ScrollView,
   SafeAreaView,
   LogBox,
+  Linking,
+  Platform,
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { Products } from "../../../models/Products";
@@ -22,7 +24,8 @@ import { ClientsService } from "../../../services/ClientService";
 import { Client } from "../../../models/Client";
 const initProducts: Client[] = [];
 export default function Clients(props: ClientsScreenProps) {
-  const [devices, setDevices] = useState(initProducts);
+  const [clients, setClients] = useState(initProducts);
+  const [clientsSearch, setClientsSearch] = useState(initProducts);
   const [searchIcon, setsearchIcon] = useState(true);
   useEffect(() => {
     LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
@@ -31,7 +34,8 @@ export default function Clients(props: ClientsScreenProps) {
     ClientsService.getInstance()
       .getAllClients()
       .then((data) => {
-        setDevices(data);
+        setClients(data);
+        setClientsSearch(data);
       });
   }, []);
 
@@ -64,11 +68,22 @@ export default function Clients(props: ClientsScreenProps) {
             width: Layout.window.width,
           }}
           placeholder=" Chercher"
+          onChangeText={(text) => {
+            setClientsSearch(
+              clients.filter((value) => {
+                return (
+                  value.name?.toLowerCase().includes(text.toLowerCase()) ||
+                  value.email?.toLowerCase().includes(text.toLowerCase()) ||
+                  value.phone?.toLowerCase().includes(text.toLowerCase())
+                );
+              })
+            );
+          }}
         />
       </View>
       <FlatList
         numColumns={1}
-        data={devices}
+        data={clientsSearch}
         renderItem={({ item }) => (
           <>
             <View
@@ -142,7 +157,7 @@ export default function Clients(props: ClientsScreenProps) {
               </View>
             </View>
             <View style={{ position: "absolute", top: 15, right: 25 }}>
-              {item.is_franchise && (
+              {item.is_franchise ? (
                 <View
                   style={{
                     backgroundColor: "#FFD88D",
@@ -157,8 +172,7 @@ export default function Clients(props: ClientsScreenProps) {
                     Franchise
                   </Text>
                 </View>
-              )}
-              {item.is_mall && (
+              ) : (
                 <View
                   style={{
                     backgroundColor: "#5ba6e4",
@@ -174,6 +188,26 @@ export default function Clients(props: ClientsScreenProps) {
                   </Text>
                 </View>
               )}
+              <TouchableOpacity
+                style={{
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginVertical: 15,
+                }}
+                onPress={() => {
+                  let phoneNumber = "";
+
+                  if (Platform.OS === "android") {
+                    phoneNumber = `tel:${item.phone}`;
+                  } else {
+                    phoneNumber = `telprompt:${item.phone}`;
+                  }
+
+                  Linking.openURL(phoneNumber);
+                }}
+              >
+                {icons.phoneCall("#62D39D")}
+              </TouchableOpacity>
             </View>
           </>
         )}

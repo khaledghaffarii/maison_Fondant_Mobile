@@ -18,21 +18,21 @@ import { Layout } from "./../../../utils/device/index";
 import { icons } from "./../../../utils/icons/index";
 import { navigate } from "../../../hooks/NavigationHook";
 import { OutputsScreenProps, ProductScreenProps } from "../../../utils/types";
-import { ClientsService } from "../../../services/ClientService";
-import { Client } from "../../../models/Client";
 import { Output } from "../../../models/Output";
 import { RecipeService } from "../../../services/RecipeService";
 const initProducts: Output[] = [];
 export default function Outputs(props: OutputsScreenProps) {
-  const [devices, setDevices] = useState(initProducts);
+  const [outputs, setOutputs] = useState(initProducts);
+  const [outputsSearch, setOutputsSearch] = useState(initProducts);
   const [searchIcon, setsearchIcon] = useState(true);
 
   useEffect(() => {
-    setDevices([]);
+    setOutputs([]);
     RecipeService.getInstance()
       .getOutputs()
       .then((data) => {
-        setDevices(data);
+        setOutputs(data);
+        setOutputsSearch(data);
       });
   }, []);
 
@@ -70,15 +70,29 @@ export default function Outputs(props: OutputsScreenProps) {
           style={{
             width: Layout.window.width,
           }}
+          onChangeText={(text) => {
+            setOutputsSearch(
+              outputs.filter((value) => {
+                return (
+                  value.customer_name
+                    ?.toLowerCase()
+                    .includes(text.toLowerCase()) ||
+                  value.customer_adresse
+                    ?.toLowerCase()
+                    .includes(text.toLowerCase())
+                );
+              })
+            );
+          }}
           placeholder=" Chercher"
         />
       </View>
       <FlatList
         numColumns={1}
-        data={devices}
+        data={outputsSearch}
         style={{ marginBottom: 70 }}
-        renderItem={({ item }) => (
-          <>
+        renderItem={({ item, index }) => (
+          <View key={index}>
             <View
               style={{
                 flexDirection: "row",
@@ -93,10 +107,13 @@ export default function Outputs(props: OutputsScreenProps) {
                 borderColor: "#eee",
               }}
             >
-              <View
+              <TouchableOpacity
                 style={{
                   flexDirection: "column",
                   flex: 1,
+                }}
+                onPress={() => {
+                  props.navigation.navigate("OutputDetails", { output: item });
                 }}
               >
                 <View
@@ -127,21 +144,16 @@ export default function Outputs(props: OutputsScreenProps) {
                   >
                     {item.customer_adresse}
                   </Text>
-
-                  <>
-                    {item.products.map((elem) => (
-                      <Text
-                        style={{
-                          fontFamily: "AllerBold",
-                          textAlign: "center",
-                          fontSize: 14,
-                          color: "#5ba6e4",
-                        }}
-                      >
-                        - {elem.name} x{elem.quantity}
-                      </Text>
-                    ))}
-                  </>
+                  <Text
+                    style={{
+                      fontFamily: "AllerBold",
+                      textAlign: "center",
+                      fontSize: 14,
+                      color: "#5ba6e4",
+                    }}
+                  >
+                    - Nombre de commandes {item.products.length}
+                  </Text>
                   <Text
                     style={{
                       fontFamily: "AllerBold",
@@ -154,7 +166,7 @@ export default function Outputs(props: OutputsScreenProps) {
                     {numberWithCommas(item.total_paid)} TND
                   </Text>
                 </View>
-              </View>
+              </TouchableOpacity>
             </View>
             <View style={{ position: "absolute", top: 15, right: 25 }}>
               {item.billed && (
@@ -190,7 +202,7 @@ export default function Outputs(props: OutputsScreenProps) {
                 </View>
               )}
             </View>
-          </>
+          </View>
         )}
       />
     </SafeAreaView>

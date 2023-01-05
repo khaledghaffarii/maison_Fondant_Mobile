@@ -23,6 +23,7 @@ import Product from "../../../modules/main/product/Product";
 import AddProduct from "../../../modules/main/product/AddProduct";
 import Clients from "../../../modules/main/clients/Clients";
 import Outputs from "../../../modules/main/outputs/Outputs";
+import OutputDetails from "../../../modules/main/outputs/OutputDetails";
 const Stack = createNativeStackNavigator<MainStackParamList>();
 
 /**
@@ -68,6 +69,7 @@ export default function MainNavigator() {
               headerTitleStyle: { fontFamily: "AllerBold" },
               headerTitleAlign: "center",
               headerShadowVisible: false,
+              contentStyle: { backgroundColor: "#fff" },
               headerLeft: () => (
                 <BackButton
                   onPress={() => {
@@ -113,6 +115,8 @@ export default function MainNavigator() {
               tabBarLabelStyle: { fontFamily: "AllerLight", fontSize: 12 },
               headerTitle: "Clients",
               headerTitleStyle: { fontFamily: "AllerBold" },
+
+              contentStyle: { backgroundColor: "white" },
               headerTitleAlign: "center",
               headerShadowVisible: false,
               headerLeft: () => (
@@ -133,6 +137,27 @@ export default function MainNavigator() {
             return {
               tabBarLabelStyle: { fontFamily: "AllerLight", fontSize: 12 },
               headerTitle: "Ventes",
+              headerShadowVisible: false,
+              contentStyle: { backgroundColor: "white" },
+              headerTitleStyle: { fontFamily: "AllerBold" },
+              headerTitleAlign: "center",
+              headerLeft: () => (
+                <BackButton
+                  onPress={() => {
+                    navigation.goBack();
+                  }}
+                />
+              ),
+            };
+          }}
+        />
+        <Stack.Screen
+          name="OutputDetails"
+          component={OutputDetails}
+          options={({ navigation, route }) => {
+            return {
+              tabBarLabelStyle: { fontFamily: "AllerLight", fontSize: 12 },
+              headerTitle: "facture",
               headerShadowVisible: false,
               headerTitleStyle: { fontFamily: "AllerBold" },
               headerTitleAlign: "center",

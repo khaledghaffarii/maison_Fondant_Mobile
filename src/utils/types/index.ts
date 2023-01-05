@@ -1,5 +1,6 @@
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { Output } from "../../models/Output";
 // import { OldReparation } from "../../models/OldReparation";
 // import { Reparation } from "../../models/Reparation";
 // import { ReparationProduct } from "../../models/ReparationProduct";
@@ -14,6 +15,7 @@ export type MainStackParamList = {
   addProduct: undefined;
   Clients: undefined;
   Outputs: undefined;
+  OutputDetails: { output: Output };
 };
 
 export type ProfileStackParamList = {
@@ -88,6 +90,11 @@ export type ClientsScreenProps = NativeStackScreenProps<
 export type OutputsScreenProps = NativeStackScreenProps<
   MainStackParamList,
   "Outputs"
+>;
+
+export type OutputDetailsScreenProps = NativeStackScreenProps<
+  MainStackParamList,
+  "OutputDetails"
 >;
 export type ProductScreenProps = NativeStackScreenProps<
   MainStackParamList,
